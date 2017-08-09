@@ -1,0 +1,270 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- base href="http://89.120.105.111/htmlham/VER2/PAGERE%20MOTOROLA%20SOFT%20DOCUMENTATIE/ENCODERE%20DECODERE/decoder%20receptie%203/FLINFO.HTM" --><style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}</style></head><body><div id="google-cache-hdr" dir="ltr"><div>Dit is Google's cachegeheugen van <a href="http://89.120.105.111/htmlham/VER2/PAGERE%20MOTOROLA%20SOFT%20DOCUMENTATIE/ENCODERE%20DECODERE/decoder%20receptie%203/FLINFO.HTM" dir="ltr">http://89.120.105.111/htmlham/VER2/PAGERE%20MOTOROLA%20SOFT%20DOCUMENTATIE/ENCODERE%20DECODERE/decoder%20receptie%203/FLINFO.HTM</a>. Dit is een momentopname van hoe de pagina eruitzag op 4 juni 2017 12:45:33 GMT. </div><div>De <a href="http://89.120.105.111/htmlham/VER2/PAGERE%20MOTOROLA%20SOFT%20DOCUMENTATIE/ENCODERE%20DECODERE/decoder%20receptie%203/FLINFO.HTM" dir="ltr">huidige pagina</a> kan in de tussentijd veranderd zijn. <a href="http://support.google.com/websearch/bin/answer.py?hl=nl&amp;p=cached&amp;answer=1687222">Meer informatie</a></div><div></div><div><span style="display:inline-block !important;margin-top:8px !important;margin-right:104px !important;white-space:nowrap !important;"><span style="margin-right:28px !important;"><span style="font-weight:bold !important;">Volledige versie</span></span><span style="margin-right:28px !important;"><a href="http://webcache.googleusercontent.com/search?q=cache:Th-ubf8w9ZoJ:89.120.105.111/htmlham/VER2/PAGERE%2520MOTOROLA%2520SOFT%2520DOCUMENTATIE/ENCODERE%2520DECODERE/decoder%2520receptie%25203/FLINFO.HTM&amp;num=1&amp;client=firefox-b-ab&amp;hl=nl&amp;gl=nl&amp;strip=1&amp;vwsrc=0">Tekstversie</a></span><span style="margin-right:28px !important;"><a href="http://webcache.googleusercontent.com/search?q=cache:Th-ubf8w9ZoJ:89.120.105.111/htmlham/VER2/PAGERE%2520MOTOROLA%2520SOFT%2520DOCUMENTATIE/ENCODERE%2520DECODERE/decoder%2520receptie%25203/FLINFO.HTM&amp;num=1&amp;client=firefox-b-ab&amp;hl=nl&amp;gl=nl&amp;strip=0&amp;vwsrc=1">Bron weergeven</a></span></span><span style="display:inline-block !important;margin-top:8px !important;color:#717171 !important;">Tip: als u uw zoekterm snel wilt vinden op deze pagina, drukt u op <b>Ctrl+F</b> of <b>⌘-F</b> (Mac) en gebruikt u de zoekbalk.</span></div></div><div style="position:relative;">
+
+<center>
+<h2>IF YOU WANT TO KNOW MORE ABOUT FLEX</h2>
+</center>
+<p align="LEFT">This page is not a summary of the FLEX protocol.
+Instead, for a nice introductory page explaining how information is
+transmitted using multiple phases, please look at this Instead, some
+general paging and FLEX information can be found
+<a href="http://www.refreq.com/braddye/">here</a>; that site has a nice
+<a href="http://www.refreq.com/braddye/guru.html">explanation</a>
+of how FLEX information is transmitted using multiple phases.
+For more technical information, look at the datasheet for the Motorola's
+MC68175 Flex paging decoder chip, which can be found
+<a href="http://www.mot.com/SPS/DSP/documentation/FLEX/">here</a>
+or for more of an overview look
+<a href="http://www.mot.com/SPS/DSP/products/MC68175.html">here</a>
+. That datasheet contains a nice but at times vague description of the
+FLEX protocol (the intent seems to be to give a design engineer a grasp
+on how FLEX works without burdening him/her with excessive details).
+Even better, US patent #5555183 covers the flex protocol (thank you to
+the kind soul who pointed this out to me).</p>
+
+<p align="LEFT">The rest of the information on this page is the
+nitty-gritty information that you must know in order to decode the FLEX
+protocol, but which I could not track down on the internet or at the
+local library. This information is mostly the result of guesswork based
+on data collected from actual FLEX transmissions.</p>
+
+<hr>
+<center>
+<h2>Table of possible transmission modes and their synchronization sequences</h2>
+<center><table border="4" bgcolor="#C0C080">
+<tbody><tr bgcolor="#FFFF00">
+<td><b>MODE</b></td>
+<td><b>BAUD RATE</b></td>
+<td><b>PHASES</b></td>
+<td><b>SYNC SEQUENCE</b></td>
+</tr>
+<tr>
+<td>FLEX</td>
+<td>1600 (2 level FSK @ 1600 SPS)</td>
+<td>A</td>
+<td>870C A6C6 AAAA 78F3</td>
+</tr>
+<tr>
+<td>FLEX</td>
+<td>3200 (4 level FSK @ 1600 SPS)</td>
+<td>A &amp; B</td>
+<td>B068 A6C6 AAAA 4F97</td>
+</tr>
+<tr>
+<td>FLEX</td>
+<td>3200 (2 level FSK @ 3200 SPS)</td>
+<td>A &amp; C</td>
+<td>UNKNOWN (*)</td>
+</tr>
+<tr>
+<td>FLEX</td>
+<td>6400 (4 level FSK @ 3200 SPS)</td>
+<td>A,B,C &amp; D</td>
+<td>DEA0 A6C6 AAAA 215F</td>
+</tr>
+<tr>
+<td>REFLEX 25</td>
+<td>1600 (2 level FSK @ 1600 SPS)</td>
+<td>A</td>
+<td>UNKNOWN (*)</td>
+</tr>
+<tr>
+<td>REFLEX 25</td>
+<td>3200 (4 level FSK @ 1600 SPS)</td>
+<td>A &amp; B</td>
+<td>UNKNOWN (*)</td>
+</tr>
+<tr>
+<td>REFLEX 25</td>
+<td>3200 (2 level FSK @ 3200 SPS)</td>
+<td>A &amp; C</td>
+<td>UNKNOWN (*)</td>
+</tr>
+<tr>
+<td>REFLEX 25</td>
+<td>6400 (4 level FSK @ 3200 SPS)</td>
+<td>A,B,C &amp; D</td>
+<td>4C7C A6C6 AAAA B383</td>
+</tr>
+</tbody></table>
+<p>(*) NOTE: Program should be able to handle these modes once their sync sequences are found.</p>
+</center>
+
+<p align="LEFT">The first step in decoding a FLEX (or ReFLEX) tranmission
+is figuring out exactly when a frame starts and what tranmission will mode
+is used to tranmsit data in that frame. The program does this by looking
+for one of the synchronization sequences shown above (No matter what
+transmission mode is used inside the data frame, the sync is always
+transmitted at 1600SPS 2 level FSK).</p>
+
+<p align="LEFT"> As you can see, there are four modes that are currently not
+recognized by the program. I could not determine their synchronization
+sequences because these modes are not used in my local area. It is
+apparent from the above table that the two center words should be "A6C6
+AAAA" and that the two other words should XOR together to give "FFFF".
+Any unrecognized sync headers fitting this pattern will be shown on the
+screen as "UNKNOWN SYNC HEADER: xxxx xxxx xxxx xxxx" message. If you
+keep seeing that message, you have most likely found either a 3200 Baud
+2 level FSK transmission or one of the lower speed ReFLEX modes. It
+would then be a simple matter to modify the program to recognize this
+mode (if this happens to you please send me the information).</p>
+
+<hr>
+
+<p align="LEFT">After the sync sequence is detected, tranmission
+continues at 1600 baud for another 88 characters or so. The program
+basically ignores this information except for the Frame Information Word
+(FIW) which is sent during this time. This 32 word uses the same bit
+fields (21 data, 10 BCH, 1 parity) and error correction/detection as
+POCSAG. The FIW determines the cycle and frame numbers which are
+displayed on the status line. Although this information is used by real
+pagers to determine when to go to sleep, the program processes this
+information only to make the status line look more impressive.</p>
+
+<p align="LEFT">Finally, transmission of the actual frame takes place
+(transmission speed is changed at this point if necessary). The program
+splits the transmitted data up into the appropriate phases (the number
+of active phases is determined by which synchronization sequence is
+used). Each transmitted phase is a completely independent data stream
+consisting of 11 blocks. Each block consists of eight 32bit words that
+have been interleaved. Each 32 bit word has the same bit field structure
+and error detection/correction code that is used in POCSAG. So, by the
+end of the frame the program will have collected 88 words of information
+per active phase. The program switches back to 1600 baud 2 level FSK in
+order to start looking for the next sync header.</p>
+
+<p align="LEFT">Brief aside: you will notice that FLEX/ReFLEX words use
+the same error dection and correcting codes that are used in POCSAG. It
+was therefore a relatively simple to add the capability to decode POCSAG
+pages.</p>
+
+<p align="LEFT">Up until this point FLEX and ReFLEX 25 data is processed
+in the same manner. At this point, a ReFLEX message will be spread out
+over all active phases (e.g. the message words could be Ph.A/Wd17;
+Ph.B./Wd17; Ph.C./Wd17; Ph.D./Wd17;  Ph.A./Wd18; Ph.B./Wd18; et cetera).
+Since I did not find any further details on ReFLEX, the program displays
+all successive non-idle words onto the screen in ReFLEX mode; the result
+is a pretty ugly display but you most certainly will be able to read the
+ReFLEX message traffic (that's better than not supporting ReFLEX at
+all). Since I found a lot more information about FLEX message structure
+I was able to format the received messages much more intelligently. The
+next table shows the possible FLEX word types transmitted during each
+phase and how they are currently processed.</p>
+
+<hr>
+<center>
+<h2>FLEX word types and associated bit fields used by the program</h2>
+<center><table border="2" bgcolor="#C0C080">
+<tbody><tr bgcolor="#FFFF00">
+<td><b>Word Type</b></td>
+<td><b>Bits</b></td>
+<td><b>Interpretation</b></td>
+</tr>
+<tr>
+<td>FIW - FRAME INFORMATION WORD</td>
+<td>4-7</td>
+<td>4 Minute cycle number [0-E]</td>
+</tr>
+<tr>
+<td> </td>
+<td>8-13</td>
+<td>Frame Number [0-7F]</td>
+</tr>
+<tr>
+<td>BIW - BLOCK INFORMATION WORD</td>
+<td>10-15</td>
+<td>First vector word number</td>
+</tr>
+<tr>
+<td> </td>
+<td>8-9</td>
+<td>First address word number minus 1</td>
+</tr>
+<tr>
+<td>VECTOR FIELD - Hex/Binary/Alpha/Secure</td>
+<td>4-6</td>
+<td>Message Type</td>
+</tr>
+<tr>
+<td></td>
+<td>7-13</td>
+<td>First Message word number</td>
+</tr>
+<tr>
+<td></td>
+<td>14-20</td>
+<td>Length of Message in words</td>
+</tr>
+<tr>
+<td>VECTOR FIELD - Numeric message types</td>
+<td>4-6</td>
+<td>Message Type</td>
+</tr>
+<tr>
+<td></td>
+<td>7-13</td>
+<td>First Message word number</td>
+</tr>
+<tr>
+<td></td>
+<td>14-16</td>
+<td>Length of Message in words</td>
+</tr>
+<tr>
+<td>ADDRESS FIELD</td>
+<td>0-20</td>
+<td>Whole field shown on screen in hex</td>
+</tr>
+<tr>
+<td>MESSAGE FIELD</td>
+<td>0-20</td>
+<td>Except for header bits, the complete<br>message is shown on screen</td>
+</tr>
+</tbody></table>
+</center>
+
+<p align="LEFT">You can see that the program processes just enough of
+the information in the FLEX data stream to display a pager's address,
+the message type, and the complete message itself. It does not do any of
+the other functions a pager must do such as reassembling fragmented
+messages, check the error correction checksum in the message header, or
+decoding the time &amp; date or pager address regrouping instructions.
+Because of this, don't be too suprised when the program occasionally
+runs off into the weeds and spits out mangled messages onto the
+screen.</p>
+
+<hr>
+<h3>Converting transmitted HEX address information to a capcode</h3>
+
+<p align="LEFT">For short addresses, simply convert the number to
+decimal and subtract 32768. You'll end up with a 7 digit number.</p>
+
+<p align="LEFT">For long addresses, invert the second 21 bit word (the
+second half of the 12 digit hex number shown on screen), multiply by
+32768, add 2067456, and then add in the first word (converted to
+decimal). The resulting number is displayed in 9 digit format with
+leadin zeroes.</p>
+
+<p align="LEFT">Technically, a FLEX capcode also includes phase, frame,
+and battery save information. Still, you should be able to find
+transmissions to your particular FLEX pager by matching up the 7 or 9
+digit number shown by pocflex with that used on your pager.</p>
+
+<hr>
+
+<center>
+<p>To sum up:<br>
+I hope the information on this page<br>
+(along with the references given at the top)<br>
+helps you sort out the intimate details of the FLEX protocol.</p>
+<hr>
+<h2>NAVIGATION</h2>
+<a href="http://89.120.105.111/htmlham/VER2/PAGERE%20MOTOROLA%20SOFT%20DOCUMENTATIE/ENCODERE%20DECODERE/decoder%20receptie%203/PINFO.HTM">PROGRAM INFORMATION</a>- - - - -
+<a href="http://89.120.105.111/htmlham/VER2/PAGERE%20MOTOROLA%20SOFT%20DOCUMENTATIE/ENCODERE%20DECODERE/decoder%20receptie%203/IINFO.HTM">INTERFACE INFORMATION</a>- - - - -
+<a href="http://www.geocities.com/CapeCanaveral/Launchpad/4039">MAIN PAGE</a>- - - - -
+<hr>
+This page hosted by <a href="http://89.120.105.111/"><img src="search_files/gc_icon.htm" border="0" align="middle"></a> &nbsp;
+Get your own <a href="http://89.120.105.111/">Free Home Page</a>
+
+
+</center></center></center></div></body></html>
